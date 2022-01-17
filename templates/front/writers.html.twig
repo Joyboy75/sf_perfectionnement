@@ -1,0 +1,18 @@
+{% extends "front/base.html.twig" %}
+
+
+{% block main %}
+
+{% for writer in writers %}
+
+	{# <img src="{{asset('media/' ~ writer.media)}}" alt="{{writer.name}}"> #}
+	
+		<h2>
+			<a href="{{ path('writer_show', {'id' : writer.id}) }}">{{ writer.name }}</a>
+		</h2>
+		<h2>
+			{{ writer.firstname }}</a>
+		</h2>
+	{% endfor %}
+
+{% endblock %}

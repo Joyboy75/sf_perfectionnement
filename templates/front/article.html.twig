@@ -1,0 +1,17 @@
+{% extends "front/base.html.twig" %}
+
+{% block main %}
+
+{# <img src="{{asset('media/' ~ article.media)}}" alt="{{article.name}}"> #}
+
+{% if article.published %}
+	<h2>{{ article.title }}</h2>
+	{# <p>{{ article.content }}</p> #}
+	<p>{{ article.date | date('d-m-Y') }}</p>
+	<p>{{ article.published }}</p>
+	<p>{{ article.category.name }}</p>
+	<p>{{ article.writer.name }}</p>
+	{% endif %}
+
+
+{% endblock %}

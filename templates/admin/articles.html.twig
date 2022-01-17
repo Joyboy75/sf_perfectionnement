@@ -1,0 +1,18 @@
+{% extends "admin/base.html.twig" %}
+
+
+{% block main %}
+
+{% for article in articles %}
+
+	{# <img src="{{asset('media/' ~ article.media)}}" alt="{{article.name}}"> #}
+	
+		<h2>
+			<a href="{{ path('admin_article_show', {'id' : article.id}) }}">{{ article.title }}</a>
+		</h2>
+		<h3>
+			{{ article.content }}</a>
+		</h3>
+	{% endfor %}
+
+{% endblock %}

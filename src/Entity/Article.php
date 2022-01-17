@@ -44,7 +44,11 @@ class Article
      */
     private $writer;
 
-    
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
+   
 
     
 
@@ -118,6 +122,18 @@ class Article
 
         return $this;
     }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }  
 
    
 }
