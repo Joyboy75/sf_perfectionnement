@@ -29,7 +29,6 @@ class Writer
      */
     private $firstname;
 
-
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="writer")
      */
