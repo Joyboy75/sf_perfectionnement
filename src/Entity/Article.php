@@ -36,11 +36,13 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity=Writer::class, inversedBy="articles")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $writer;
 
@@ -48,6 +50,17 @@ class Article
      * @ORM\Column(type="date")
      */
     private $date;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="article")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $images;
+
+    
+
+
+
    
 
     
@@ -56,6 +69,7 @@ class Article
     {
         $this->categories = new ArrayCollection();
         $this->writers = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -133,7 +147,38 @@ class Article
         $this->date = $date;
 
         return $this;
-    }  
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getArticle() === $this) {
+                $image->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
 
    
 }

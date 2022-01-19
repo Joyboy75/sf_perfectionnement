@@ -32,6 +32,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="category")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $articles;
 

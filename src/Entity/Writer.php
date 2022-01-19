@@ -31,6 +31,8 @@ class Writer
 
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="writer")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+
      */
     private $articles;
 

@@ -12,28 +12,24 @@ class WriterController extends AbstractController
     /**
      * @Route("/writer", name="writer")
      */
-    public function index(): Response
-    {
-        return $this->render('writer/index.html.twig', [
-            'controller_name' => 'WriterController',
-        ]);
-    }
+    // public function index(): Response
+    // {
+    //     return $this->render('writer/index.html.twig', [
+    //         'controller_name' => 'WriterController',
+    //     ]);
+    // }
 
 
-    /**
-     * @Route("writers", name="writer_list")
-     */
-    public function writertList(WriterRepository $writerRepository)
+    
+    public function listWriter(WriterRepository $writerRepository)
     {
         $writers = $writerRepository->findAll();
 
         return $this->render("front/writers.html.twig", ['writers' => $writers]);
     }
 
-    /**
-     * @Route("writer/{id}", name="writer_show")
-     */
-    public function writerShow($id, WriterRepository $writerRepository)
+    
+    public function showWriter($id, WriterRepository $writerRepository)
     {
         $writer = $writerRepository->find($id);
 

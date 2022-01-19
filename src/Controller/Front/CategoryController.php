@@ -18,20 +18,16 @@ class CategoryController extends AbstractController
             'controller_name' => 'CategoryController',
         ]);
     }
-    /**
-     * @Route("categories", name="category_list")
-     */
-    public function categoryList(CategoryRepository $categoryRepository)
+   
+    public function listCategory(CategoryRepository $categoryRepository)
     {
         $categories = $categoryRepository->findAll();
 
         return $this->render("front/categories.html.twig", ['categories' => $categories]);
     }
 
-    /**
-     * @Route("category/{id}", name="category_show")
-     */
-    public function categoryShow($id, CategoryRepository $categoryRepository)
+    
+    public function showCategory($id, CategoryRepository $categoryRepository)
     {
         $category = $categoryRepository->find($id);
 

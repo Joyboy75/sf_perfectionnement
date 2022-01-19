@@ -12,9 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminCategoryController extends AbstractController
 {
-    /**
-     * @Route("admin/categories", name="admin_category_list")
-     */
+    
     public function adminListCategory(CategoryRepository $categoryRepository)
     {
         $categories = $categoryRepository->findAll();
@@ -22,9 +20,7 @@ class AdminCategoryController extends AbstractController
         return $this->render("admin/categories.html.twig", ['categories' => $categories]);
     }
 
-    /**
-     * @Route("admin/category/{id}", name="admin_category_show")
-     */
+    
     public function adminShowCategory($id, CategoryRepository $categoryRepository)
     {
         $category = $categoryRepository->find($id);
@@ -32,9 +28,7 @@ class AdminCategoryController extends AbstractController
         return $this->render("admin/category.html.twig", ['category' => $category]);
     }
 
-    /**
-     * @Route("admin/update/category/{id}", name="admin_update_category")
-     */
+    
     public function adminUpdateCategory(
         $id,
         CategoryRepository $categoryRepository,
@@ -60,10 +54,8 @@ class AdminCategoryController extends AbstractController
         return $this->render("admin/categoryform.html.twig", ['categoryForm' => $categoryForm->createView()]);
     }
 
-    /**
-     * @Route("admin/create/category/", name="admin_category_create")
-     */
-    public function adminCategoryCreate(Request $request, EntityManagerInterface $entityManagerInterface)
+    
+    public function adminCreateCategory(Request $request, EntityManagerInterface $entityManagerInterface)
     {
         $category = new Category();
 
@@ -83,9 +75,7 @@ class AdminCategoryController extends AbstractController
         return $this->render("admin/categoryform.html.twig", ['categoryForm' => $categoryForm->createView()]);
     }
 
-    /**
-     * @Route("admin/delete/category/{id}", name="admin_delete_category")
-     */
+    
     public function adminDeleteCategory(
         $id,
         CategoryRepository $categoryRepository,
